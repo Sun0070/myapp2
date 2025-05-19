@@ -6,7 +6,7 @@ pipeline {
         GIT_BRANCH = 'master' // 또는 master
         GIT_ID = 'skala-github-048' // GitHub PAT credential ID
         IMAGE_REGISTRY = 'amdp-registry.skala-ai.com/skala25a'
-        IMAGE_NAME = 'sk048-myapp'
+        IMAGE_NAME = 'sk048-my-app'
         IMAGE_TAG = '1.0.0'
         DOCKER_CREDENTIAL_ID = 'skala-image-registry-id'  // Harbor 인증 정보 ID
     }
@@ -40,9 +40,9 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                    sed -i 's/sk048-myapp/sk048-myapp/g' ./k8s/*.yaml
+                    sed -i 's/sk048-my-app/sk048-my-app/g' ./k8s/*.yaml
                     kubectl apply -f ./k8s
-                    kubectl rollout status deployment/sk048-myapp
+                    kubectl rollout status deployment/sk048-my-app
                 '''
             }
         }
